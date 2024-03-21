@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handleliste</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+
+        
+        let items = ['Genser', ' Bukse', ' Hatt', ' Sko', ' Sokker'];
+
+        updateView()
+
+        function updateView(){
+            let textAdd= '';
+            for (let i = 0; i<items.length; i++){
+            textAdd += /*html*/`
+            <li>${items[i]}<br>
+                <button onclick="remove(${i})">Slett</button>
+                <button onclick="change(${i})">Endre navn</button></li>
+            `;
+            }
+            textAdd +=/*html*/`
+            <input oninput="thing = this.value">
+            <button onclick="newItem()">Legg til vare</button>`;
+            document.getElementById("app").innerHTML = textAdd;
+            
+        }
+
+        function newItem(){
+            items.push(thing);
+            thing = '';
+            updateView()
+        }
+        function remove(i){
+            items.splice(i,1)
+            updateView()
+        }
+        function change(i){
+            items[i]= thing;
+            updateView()
+        }
+
+    </script>
+</body>
+</html>
